@@ -139,6 +139,41 @@
       margin: 0 auto;
     }
 
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      flex-shrink: 0;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.3s forwards;
+    }
+
+    .hero-image-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 23px;
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      z-index: -1;
+      opacity: 0.6;
+    }
+
+    .hero-photo {
+      width: 300px;
+      height: 400px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 20px;
+      border: 2px solid var(--bg);
+      display: block;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+    }
+
     .hero-eyebrow {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.875rem;
@@ -348,6 +383,28 @@
     }
 
     .about-text p strong { color: var(--text); font-weight: 600; }
+
+    .about-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    }
+
+    .about-photo {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
 
     .about-stats {
       display: grid;
@@ -805,6 +862,10 @@
       section { padding: 5rem 1.5rem; }
       #hero { padding-top: 7rem; }
 
+      .hero-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-image-wrap { order: -1; display: flex; justify-content: center; }
+      .hero-photo { width: 180px; height: 220px; }
+
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .about-stats { grid-template-columns: 1fr 1fr; }
 
@@ -850,34 +911,41 @@
 
 <!-- ── HERO ── -->
 <section id="hero">
-  <div class="hero-eyebrow">Available for freelance &amp; full-time</div>
-  <h1 class="hero-name">
-    Bhoj Singh Karki<br/>
-    <span class="highlight">Full-Stack Developer</span><br/>
-    <span class="highlight">&amp; UI/UX Designer</span>
-  </h1>
-  <p class="hero-tagline">
-    Building fast, beautiful digital products — from pixel-perfect interfaces to robust backends. Based in Kathmandu, Nepal.
-  </p>
-  <div class="hero-tags">
-    <span class="tag"><span class="dot green"></span>Open to work</span>
-    <span class="tag"><span class="dot"></span>4+ Years Experience</span>
-    <span class="tag"><span class="dot blue"></span>React · Angular · Node.js</span>
-    <span class="tag"><span class="dot blue"></span>Figma · UI/UX</span>
-  </div>
-  <div class="hero-actions">
-    <a href="#projects" class="btn btn-primary">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-      View Projects
-    </a>
-    <a href="#contact" class="btn btn-outline">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      Get In Touch
-    </a>
-  </div>
-  <div class="hero-scroll">
-    <div class="hero-scroll-line"></div>
-    Scroll to explore
+  <div class="hero-layout">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Available for freelance &amp; full-time</div>
+      <h1 class="hero-name">
+        Bhoj Singh Karki<br/>
+        <span class="highlight">Full-Stack Developer</span><br/>
+        <span class="highlight">&amp; UI/UX Designer</span>
+      </h1>
+      <p class="hero-tagline">
+        Building fast, beautiful digital products — from pixel-perfect interfaces to robust backends. Based in Kathmandu, Nepal.
+      </p>
+      <div class="hero-tags">
+        <span class="tag"><span class="dot green"></span>Open to work</span>
+        <span class="tag"><span class="dot"></span>4+ Years Experience</span>
+        <span class="tag"><span class="dot blue"></span>React · Angular · Node.js</span>
+        <span class="tag"><span class="dot blue"></span>Figma · UI/UX</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          View Projects
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get In Touch
+        </a>
+      </div>
+      <div class="hero-scroll">
+        <div class="hero-scroll-line"></div>
+        Scroll to explore
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <img src="profile.jpg" alt="Bhoj Singh Karki" class="hero-photo" />
+    </div>
   </div>
 </section>
 
@@ -902,22 +970,27 @@
         I hold a <strong>Bachelor's Degree</strong> in Computer Science from Far Western University and am continuously expanding my stack — currently learning AWS, ERPNext, and Shopify development.
       </p>
     </div>
-    <div class="about-stats reveal">
-      <div class="stat-card">
-        <div class="stat-num">4+</div>
-        <div class="stat-label">Years Experience</div>
+    <div class="about-right reveal">
+      <div class="about-photo-wrap">
+        <img src="profile.jpg" alt="Bhoj Singh Karki" class="about-photo" />
       </div>
-      <div class="stat-card">
-        <div class="stat-num">10+</div>
-        <div class="stat-label">Technologies</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">4</div>
-        <div class="stat-label">Languages Spoken</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">∞</div>
-        <div class="stat-label">Still Learning</div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">4+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Technologies</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Languages Spoken</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Still Learning</div>
+        </div>
       </div>
     </div>
   </div>
